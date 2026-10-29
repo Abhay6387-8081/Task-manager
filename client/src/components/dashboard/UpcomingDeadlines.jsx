@@ -1,6 +1,6 @@
 import {Calendar} from 'lucide-react';
 import {Link} from 'react-router-dom';
-import { formatRelativeDue,isOverDue } from '../../utils/dateHelpers';
+import { formatRelativeDue,isOverdue } from '../../utils/dateHelpers';
 import { PriorityBadge } from '../ui/Badge';
 import EmptyState from '../ui/EmptyState';
 
@@ -22,7 +22,7 @@ function UpcomingDeadlines({tasks}){
                 >
                 <div>
                     <p className='text-sm font-medium text-ink-900 truncate'>{task.title}</p>
-                    <p className={`text-sm mt-0.5 ${isOverDue(task)?'text-danger font-medium':'text-ink-500'}`}>{formatRelativeDue(task.dueDate)}</p>
+                    <p className={`text-sm mt-0.5 ${isOverdue(task)?'text-danger font-medium':'text-ink-500'}`}>{formatRelativeDue(task.dueDate)}</p>
                 </div>
                 <PriorityBadge priority={task.priority}/>
                 </Link>

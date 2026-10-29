@@ -1,4 +1,4 @@
-export function isOverDue(task){
+export function isOverdue(task){
     if(!task.dueDate||task.status==='completed') return false;
     return new Date(task.dueDate) < new Date(new Date().setHours(0,0,0,0));
 }

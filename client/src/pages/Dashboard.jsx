@@ -7,19 +7,22 @@ import {
 } from "lucide-react";
 import StatCard from "../components/dashboard/StatCard";
 import Topbar from "../components/layout/Topbar";
-import mockTasks from "../data/mockTasks";
-import { isOverDue } from "../utils/dateHelpers";
+// import mockTasks from "../data/mockTasks";
+import { useTaskContext } from "../hooks/useTaskContext";
+import { isOverdue } from "../utils/dateHelpers";
 import UpcomingDeadlines from "../components/dashboard/UpcomingDeadlines";
 import RecentTasks from "../components/dashboard/RecentTasks";
 
 function Dashboard() {
-  const tasks = mockTasks;
+  // const tasks = mockTasks;
+
+  const { tasks } = useTaskContext();
 
   const total = tasks.length;
   const completed = tasks.filter((t) => t.status === "completed").length;
   const pending = tasks.filter((t) => t.status === "todo").length;
   const inProgress = tasks.filter((t) => t.status === "in-progress").length;
-  const overdue = tasks.filter(isOverDue).length;
+  const overdue = tasks.filter(isOverdue).length;
   const completionPct = total > 0 ? Math.round((completed / total) * 100) : 0;
 
   return (
